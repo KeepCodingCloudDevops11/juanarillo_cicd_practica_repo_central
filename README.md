@@ -9,6 +9,8 @@ Práctica de Juan Arillo para el módulo de **Ciclo de vida de un desarrollo - C
 - [Desarrollo de la práctica](#desarrollo-de-la-práctica)
   - [Gitflow](#gitflow)  
   - [Preparación para desarrollo](#preparación-para-desarrollo)  
+  - [PR a dev](#pr-a-dev)
+  - [CircleCI pipeline](#circleci-pipeline)
 
 ## DESCRIPCIÓN
 
@@ -73,4 +75,26 @@ git checkout -b feature/mi_nueva_feature
 - Trabajará con su IDE para desarrollar su tarea. Si el Desarrollador usa *Visual Studio Code*, se han creado unas configuraciones que le desplegarán un proyecto en local con la base de datos y todo, y así poder hacer también checks en local.
 
 ![vscode](./imagenes/vscode.jpg)
+
+### PR a dev
+
+- Una vez el Desarrollador ha terminado su trabajo, subirá su rama al repositorio.
+
+```bash
+git add .
+git commit -am "feat: Lo que haya hecho"
+git push --set-upstream origin feature/mi_nueva_feature
+```
+
+- El Desarrollador accede al repositorio de Github y crear un *Pull Request* para mergear la rama subida **con la rama dev**.
+
+![pull_request](./imagenes/pr.jpg)
+
+- Al crear el *Pull Request*, se dispararán unos checks que se han creado con *Github Actions*
+
+![checks_dev](./imagenes/checks_dev.jpg)
+
+- Una vez terminado la comprobación, si todo es correcto, se puede mergear a dev.
+
+### CircleCI pipeline
 
