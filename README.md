@@ -4,9 +4,11 @@ Práctica de Juan Arillo para el módulo de **Ciclo de vida de un desarrollo - C
 
 ## TABLA DE CONTENIDOS
 
-[Descripción](#descripción)  
-[Recursos](#recursos)  
-[Desarrollo de la práctica](#desarrollo-de-la-práctica)  
+- [Descripción](#descripción)  
+- [Recursos](#recursos)  
+- [Desarrollo de la práctica](#desarrollo-de-la-práctica)
+  - [Gitflow](#gitflow)  
+  - [Preparación para desarrollo](#preparación-para-desarrollo)  
 
 ## DESCRIPCIÓN
 
@@ -44,11 +46,31 @@ El Desarrollador debe de sacar una rama de **dev** con un nombre indicativo de l
 
 Una vez el Desarrollador termine el trabajo, subirá la rama al repositorio y abrirá un *Pull Request* de la rama subida **sobre la rama dev** en el *repositorio de Github* de manera manual.  
 
-Al realizar el *Pull Request* se activarán unas *Github Actions* que realizarán unos checks de linting, testeo y cobertura para poder mergear con seguridad a la rama *dev*.
+Al realizar el *Pull Request* se activarán unas *Github Actions* que realizarán unos checks de linting, testeo, cobertura, análisis estático y análisis de vulnerabilidades, para poder mergear con seguridad a la rama *dev*.
 
 Una vez realizado este mergeo, se lanzarán unos checks de linting, testeo y cobertura en un pipeline de *CircleCI*.
 
 Cuando se quiera desplegar a producción, se realizará de manera manual en el *repositorio de Github*, un *Pull Request* **de la rama dev sobre la rama main**. En este *Pull Request* nos aparecerán los checks que se realizaron con *CircleCI*, y se volverán a ejecutar los checks de *Github Actions*.
 
 Si todo es correcto y se mergea, se lanzará un pipeline de *CircleCI* con los checks anteriores, una generación de release, la construcción y el taggeo de la imagen de la aplicación y su subida al repositorio de *Docker Hub*.  
+
+### Preparación para desarrollo
+
+- El Desarrollador se clonará el repositorio donde se encuentra la aplicación.
+
+```bash
+git clone https://github.com/juarru/juanarillo_cicd_practica.git
+```
+
+- Se situará dentro del repositorio y, desde la rama dev, creará una nueva rama para desarrollar su tarea.
+
+```bash
+cd juanarillo_cicd_practica
+git checkout dev
+git checkout -b feature/mi_nueva_feature
+```
+
+- Trabajará con su IDE para desarrollar su tarea. Si el Desarrollador usa *Visual Studio Code*, se han creado unas configuraciones que le desplegarán un proyecto en local con la base de datos y todo, y así poder hacer también checks en local.
+
+![vscode](./imagenes/vscode.jpg)
 
