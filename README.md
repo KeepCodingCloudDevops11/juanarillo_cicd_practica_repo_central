@@ -37,6 +37,7 @@ La práctica está compuesta de los siguientes repositorios y proyectos:
 - Repositorio de los artefactos de la release -> <https://github.com/juarru/juanarillo_cicd_practica/releases>  
 - Repositorio de las imágenes generadas -> <https://hub.docker.com/repository/docker/juanarillo/cicd_practica/general>
 - Proyecto de CircleCI -> <https://app.circleci.com/pipelines/github/juarru/juanarillo_cicd_practica>
+- Proyecto de Codecov -> <https://app.codecov.io/gh/juarru/juanarillo_cicd_practica>
 - Proyecto de Sonarqube -> <https://sonarcloud.io/summary/overall?id=juarru_juanarillo_cicd_practica&branch=main>
 - Repositorio de la infraestructura de despliegue -> <https://github.com/juarru/juanarillo_cicd_practica_argo>  
 
@@ -109,6 +110,10 @@ Al realizar la acción de mergeo en dev, se activará un pipeline de *CircleCI* 
 - Instala las dependencias del proyecto *Flask*, a partir del fichero `requirements.txt`.
 - Realizar el linting del proyecto con *pylint*.  
 - Realiza los tests y el coverage con *pytest*.
+- Sube un reporte a *Codecov*.
+
+![codecov-dev](./imagenes/codecov-dev.jpg)
+
 - Realiza un análisis de vulnerabilidades con *ggshield*.
 
 ![circle-dev](./imagenes/circle-dev.jpg)
@@ -132,6 +137,10 @@ Al realizar la acción de mergeo en main, se activará un pipeline de *CircleCI*
 - Instala las dependencias del proyecto *Flask*, a partir del fichero `requirements.txt`.
 - Realizar el linting del proyecto con *pylint*.  
 - Realiza los tests y el coverage con *pytest*.
+- Sube un reporte a *Codecov*
+
+![codecov-main](./imagenes/codecov-main.jpg)
+
 - Realiza un análisis de vulnerabilidades con *ggshield*.
 - Realiza un análisis con [*SonarQube*](https://sonarcloud.io/summary/overall?id=juarru_juanarillo_cicd_practica&branch=main) y sube los resultados al proyecto vinculado en la página.
 
