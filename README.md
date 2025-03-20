@@ -6,11 +6,14 @@ Práctica de Juan Arillo para el módulo de **Ciclo de vida de un desarrollo - C
 
 - [Descripción](#descripción)  
 - [Recursos](#recursos)  
-- [Desarrollo de la práctica](#desarrollo-de-la-práctica)
+- [Desarrollo y construcción de la imagen de la aplicación](#desarrollo-y-construcción-de-la-imagen-de-la-aplicación)
   - [Gitflow](#gitflow)  
   - [Preparación para desarrollo](#preparación-para-desarrollo)  
   - [PR a dev](#pr-a-dev)
   - [CircleCI pipeline en dev](#circleci-pipeline-en-dev)
+  - [PR en main](#pr-en-main)
+  - [CircleCI pipeline en main](#circleci-pipeline-en-main)
+- [Despliegue de la aplicación](#despliegue-de-la-aplicación)
 
 ## DESCRIPCIÓN
 
@@ -36,7 +39,7 @@ La práctica está compuesta de los siguientes repositorios y proyectos:
 
 > **Nota:** En el `README.md` del repositorio de código y del repositorio de infraestructura, se encontrarán las instrucciones para su uso.
 
-## DESARROLLO DE LA PRÁCTICA
+## DESARROLLO Y CONSTRUCCIÓN DE LA IMAGEN DE LA APLICACIÓN
 
 ### Gitflow
 
@@ -116,3 +119,36 @@ Al realizar la acción de mergeo en dev, se activará un pipeline de *CircleCI* 
 - Al crear este *Pull Request*, se volverán a disparar los checks de dev a través de *Github Actions*, y tendremos los checks realizados en el pipeline de *CircleCI*.
 
 ![checks_main](./imagenes/checks_main+.jpg)
+
+- Cuando hayan acabado las comprobaciones, si todo es correcto, se puede mergear a main.
+
+### CircleCI pipeline en main
+
+Al realizar la acción de mergeo en main, se activará un pipeline de *CircleCI* que realizará las siguientes acciones:
+
+- Instala las dependencias del proyecto *Flask*, a partir del fichero `requirements.txt`.
+- Realizar el linting del proyecto con *pylint*.  
+- Realiza los tests y el coverage con *pytest*.
+- Realiza un análisis de vulnerabilidades con *ggshield*.
+- Realiza un análisis con [*SonarQube*](https://sonarcloud.io/summary/overall?id=juarru_juanarillo_cicd_practica&branch=main) y sube los resultados al proyecto vinculado en la página.
+
+![sonarqube](./imagenes/sonarqube.jpg)
+
+- Genera el nuevo TAG y crea la release en el repositorio de [*Github*](https://github.com/juarru/juanarillo_cicd_practica/releases) con su Changelog y guardando los assets de la release.
+
+![releases](./imagenes/releases.jpg)
+
+- Construye la imagen de la aplicación, y la sube a [*Dockerhub*](https://hub.docker.com/repository/docker/juanarillo/cicd_practica/general) con su nuevo TAG y actualiza el TAG `latest`.
+
+![dockerhub](./imagenes/dockerhub.jpg)
+
+- Termina el pipeline de construcción y envío al repo.
+
+![circle-main](./imagenes/circle-main.jpg)
+
+## DESPLIEGUE DE LA APLICACIÓN
+
+En esta sección se explican los pasos para desplegar la aplicación *Flask* en un cluster de *Kubernetes* usando *Kind* y *ArgoCD*.
+
+### Clonación del proyecto
+
