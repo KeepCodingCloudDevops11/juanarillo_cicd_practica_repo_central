@@ -14,6 +14,9 @@ Práctica de Juan Arillo para el módulo de **Ciclo de vida de un desarrollo - C
   - [PR en main](#pr-en-main)
   - [CircleCI pipeline en main](#circleci-pipeline-en-main)
 - [Despliegue de la aplicación](#despliegue-de-la-aplicación)
+  - [Clonación del proyecto](#clonación-del-proyecto)
+  - [Despliegue automático](#despliegue-automático)
+  - [Acceso a la aplicación](#acceso-a-la-aplicación)
 
 ## DESCRIPCIÓN
 
@@ -152,3 +155,64 @@ En esta sección se explican los pasos para desplegar la aplicación *Flask* en 
 
 ### Clonación del proyecto
 
+Para proceder a la creación del cluster y despliegue de la aplicación, clonaremos el repositorio que se encuentra en *Github*, y nos situamos dentro de la carpeta del proyecto.
+
+```bash
+git clone https://github.com/juarru/juanarillo_cicd_practica_argo.git
+cd juanarillo_cicd_practica_argo
+```
+
+### Despliegue automático
+
+Existe un fichero `install.sh` que realiza casi todo el proceso de manera automática. Damos permisos al fichero para poder ejecutarse y lo lanzamos.
+
+```bash
+sudo chmod +x install.sh
+./install.sh
+```
+
+Se ejecutarán todas las acciones, y se devolverá al final una serie de instrucciones que hay que seguir para terminar con el proceso.
+
+![deploy](./imagenes/deploy.jpg)
+
+Como se indica en la salida del despliegue, ahora habrá que realizar los siguientes pasos:
+
+- Hacer el *port-forward* para poder acceder a *ArgoCD*. Mantenerlo en ejecución.
+
+```kubectl
+kubectl port-forward svc/argocd-server -n argocd 8081:443
+```
+
+- Si no ha dado tiempo a desplegar el pod de *ArgoCD*, habrá fallado la devolución del password. Realizar la instrucción que se indica en la salida del ejecutable.
+
+```kubectl
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath={.data.password} | base64 -d
+```
+
+- Ahora podemos acceder a *ArgoCD* en la dirección `http://localhost:8081`
+
+![argocd](./imagenes/argocd.jpg)
+
+- La aplicación aparecerá desplegada.
+
+![argo-app](./imagenes/argo-app.jpg)
+
+### Acceso a la aplicación
+
+Para ver la aplicación funcionando, primero habrá que editar el fichero `hosts` de su máquina, y añadir la siguiente línea:
+
+```bash
+127.0.0.1       flask.local
+```
+
+Una vez configurado esto, podemos acceder a la aplicación de dos maneras diferentes:
+
+- Escribir `http://flask.local` en el navegador.
+
+- Acceder desde *ArgoCD*
+
+![app](./imagenes/app.jpg)
+
+Si todo es correcto, se podrá acceder a la aplicación.
+
+![navegador](./imagenes/navegador.jpg)
