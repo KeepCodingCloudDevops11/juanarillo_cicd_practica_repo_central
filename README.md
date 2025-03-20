@@ -10,7 +10,7 @@ Práctica de Juan Arillo para el módulo de **Ciclo de vida de un desarrollo - C
   - [Gitflow](#gitflow)  
   - [Preparación para desarrollo](#preparación-para-desarrollo)  
   - [PR a dev](#pr-a-dev)
-  - [CircleCI pipeline](#circleci-pipeline)
+  - [CircleCI pipeline en dev](#circleci-pipeline-en-dev)
 
 ## DESCRIPCIÓN
 
@@ -96,5 +96,23 @@ git push --set-upstream origin feature/mi_nueva_feature
 
 - Una vez terminado la comprobación, si todo es correcto, se puede mergear a dev.
 
-### CircleCI pipeline
+### CircleCI pipeline en dev
 
+Al realizar la acción de mergeo en dev, se activará un pipeline de *CircleCI* que realizará las siguientes acciones:
+
+- Instala las dependencias del proyecto *Flask*, a partir del fichero `requirements.txt`.
+- Realizar el linting del proyecto con *pylint*.  
+- Realiza los tests y el coverage con *pytest*.
+- Realiza un análisis de vulnerabilidades con *ggshield*.
+
+![circle-dev](./imagenes/circle-dev.jpg)
+
+### PR en main
+
+- Cuando se desee generar una nueva versión de producción, se realizará un *Pull Request* desde el repositorio de *Github*, desde la rama *dev* a la rama *main*. 
+
+![pr-main](./imagenes/pr-main.jpg)
+
+- Al crear este *Pull Request*, se volverán a disparar los checks de dev a través de *Github Actions*, y tendremos los checks realizados en el pipeline de *CircleCI*.
+
+![checks_main](./imagenes/checks_main+.jpg)
