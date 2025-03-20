@@ -110,6 +110,10 @@ Al realizar la acción de mergeo en dev, se activará un pipeline de *CircleCI* 
 - Instala las dependencias del proyecto *Flask*, a partir del fichero `requirements.txt`.
 - Realizar el linting del proyecto con *pylint*.  
 - Realiza los tests y el coverage con *pytest*.
+
+![test](./imagenes/tests.jpg)
+![coverage](./imagenes/coverage.jpg)
+
 - Sube un reporte a *Codecov*.
 
 ![codecov-dev](./imagenes/codecov-dev.jpg)
@@ -137,6 +141,10 @@ Al realizar la acción de mergeo en main, se activará un pipeline de *CircleCI*
 - Instala las dependencias del proyecto *Flask*, a partir del fichero `requirements.txt`.
 - Realizar el linting del proyecto con *pylint*.  
 - Realiza los tests y el coverage con *pytest*.
+
+![test](./imagenes/tests.jpg)
+![coverage](./imagenes/coverage.jpg)
+
 - Sube un reporte a *Codecov*
 
 ![codecov-main](./imagenes/codecov-main.jpg)
