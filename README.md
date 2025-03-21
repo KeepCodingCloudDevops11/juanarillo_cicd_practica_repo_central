@@ -6,6 +6,7 @@ Práctica de Juan Arillo para el módulo de **Ciclo de vida de un desarrollo - C
 
 - [Descripción](#descripción)  
 - [Recursos](#recursos)  
+- [Video explicativo](#video-explicativo)  
 - [Desarrollo y construcción de la imagen de la aplicación](#desarrollo-y-construcción-de-la-imagen-de-la-aplicación)
   - [Gitflow](#gitflow)  
   - [Preparación para desarrollo](#preparación-para-desarrollo)  
@@ -42,6 +43,10 @@ La práctica está compuesta de los siguientes repositorios y proyectos:
 - Repositorio de la infraestructura de despliegue -> <https://github.com/juarru/juanarillo_cicd_practica_argo>  
 
 > **Nota:** En el `README.md` del repositorio de código y del repositorio de infraestructura, se encontrarán las instrucciones para su uso.
+
+## VIDEO EXPLICATIVO
+
+Aquí se puede encontrar el video explicativo de la práctica -> <https://www.loom.com/share/226325609bde4fbc825b7f40e0fb5610?sid=e9ab2c61-aa48-4b8f-b504-842a22025cd8>
 
 ## DESARROLLO Y CONSTRUCCIÓN DE LA IMAGEN DE LA APLICACIÓN
 
