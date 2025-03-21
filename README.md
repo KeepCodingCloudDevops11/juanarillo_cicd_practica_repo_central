@@ -120,6 +120,10 @@ Al realizar la acción de mergeo en dev, se activará un pipeline de *CircleCI* 
 
 - Realiza un análisis de vulnerabilidades con *ggshield*.
 
+![ggshield](./imagenes/ggshield.jpg)
+
+- Termina el pipeline
+
 ![circle-dev](./imagenes/circle-dev.jpg)
 
 ### PR en main
@@ -150,6 +154,9 @@ Al realizar la acción de mergeo en main, se activará un pipeline de *CircleCI*
 ![codecov-main](./imagenes/codecov-main.jpg)
 
 - Realiza un análisis de vulnerabilidades con *ggshield*.
+
+![ggshield](./imagenes/ggshield.jpg)
+
 - Realiza un análisis con [*SonarQube*](https://sonarcloud.io/summary/overall?id=juarru_juanarillo_cicd_practica&branch=main) y sube los resultados al proyecto vinculado en la página.
 
 ![sonarqube](./imagenes/sonarqube.jpg)
