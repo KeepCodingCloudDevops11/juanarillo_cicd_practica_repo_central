@@ -154,17 +154,18 @@ Al realizar la acción de mergeo en main, se activará un pipeline de *CircleCI*
 
 ![sonarqube](./imagenes/sonarqube.jpg)
 
-- Genera el nuevo TAG y crea la release en el repositorio de [*Github*](https://github.com/juarru/juanarillo_cicd_practica/releases) con su Changelog y guardando los assets de la release.
+- Al utilizar la librería de **semantic-release**, automáticamente se generará el nuevo TAG y crea la release en el repositorio de [*Github*](https://github.com/juarru/juanarillo_cicd_practica/releases) con su Changelog y guardando los assets de la release, en el caso que los tipos de commits así lo creen.
 
 ![releases](./imagenes/releases.jpg)
 
-- Construye la imagen de la aplicación, y la sube a [*Dockerhub*](https://hub.docker.com/repository/docker/juanarillo/cicd_practica/general) con su nuevo TAG y actualiza el TAG `latest`.
-
-![dockerhub](./imagenes/dockerhub.jpg)
-
-- Termina el pipeline de construcción y envío al repo.
+- Termina el pipeline de construcción.
 
 ![circle-main](./imagenes/circle-main.jpg)
+
+- Si en el proceso de construcción se ha generado un nuevo *TAG* , se lanza un workflow que construye la imagen de la aplicación, y la sube a [*Dockerhub*](https://hub.docker.com/repository/docker/juanarillo/cicd_practica/general) con su nuevo TAG y actualiza el TAG `latest`.
+
+![tag](./imagenes/tag.jpg)
+![dockerhub](./imagenes/dockerhub.jpg)
 
 ## DESPLIEGUE DE LA APLICACIÓN
 
